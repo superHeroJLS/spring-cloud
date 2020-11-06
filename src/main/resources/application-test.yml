@@ -1,0 +1,11 @@
+server:
+  port: 8090
+
+my:
+  name: 'spring boot'
+  age: 10
+  number: ${random.int}
+  uuid: ${random.uuid}
+  max: ${random.int(10)}
+  value: ${random.value}
+  greeting: hi,i'am ${my.name}

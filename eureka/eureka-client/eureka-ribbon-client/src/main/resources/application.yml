@@ -1,0 +1,21 @@
+server:
+  port: 8769
+
+ribbon:
+  eureka:
+    enabled: false #禁止Ribbon从Eureka Client自动获取服务注册列表
+
+# ribbon手动维护Eureka Server服务注册列表，服务名称为stores
+stores:
+  ribbon:
+    listOfServers: example.com, google.com
+
+spring:
+  application:
+    name: eureka-client-provider
+  #datasource
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456

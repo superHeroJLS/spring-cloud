@@ -1,0 +1,25 @@
+server:
+  port: 8761
+
+#eureka
+eureka:
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 90
+  client:
+    register-with-eureka: false #eureka server不注册到eureka server，防止自己注册自己
+    fetch-registry: false #作为eureka server不获取服务注册列表信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #与eureka server的地址，用这个地址和eureka server通信，可以为多个用逗号隔开
+  server:
+    response-cache-update-interval-ms: 30000 #eureka server响应缓存的维护间隔
+    enable-self-preservation: true #erueka server自我保护
+    eviction-interval-timer-in-ms: 90000 #服务心跳失效后多久，删除失效服务
+
+#datasource
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
