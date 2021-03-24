@@ -1,0 +1,17 @@
+#在SpringBoot项目中：不会加载bootstrap.yml文件，默认加载application.yml文件，加载顺序 application.yml > application-dev.yml
+#在SpringCloud项目中：bootstrap.yml在application.yml前加载，加载顺序 bootstrap.yml > application.yml > application-dev.yml > {spring.application.name}-{spring.profiles.active}.yml
+spring:
+  application:
+    name: config-client
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+#  profiles:
+#    active: dev #设置为dev，项目在加载完application.yml后，还会再加载application-dev.yml
+
+server:
+  port: 9763
+
+foo: defined in application

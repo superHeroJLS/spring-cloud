@@ -1,0 +1,45 @@
+#在SpringBoot项目中：不会加载bootstrap.yml文件
+#在SpringCloud项目中：bootstrap.yml在application.yml前加载
+spring:
+  application:
+    name: config-client
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+  cloud:
+    config:
+      #向config server（注册到eureka server的微服务）读取配置文件，config server有多个实例的话会自动开启负载均衡
+      discovery:
+        enabled: true
+        service-id: config-server
+  #    config:
+#      uri: http://localhost:9769  #向config server读取配置文件，配置文件名称为：{spring.application.name}-{spring.profiles.active}.yml
+#      fail-fast: true #读取配置文件失败执行快速失败
+  profiles:
+    active: dev
+  rabbitmq:
+    host: 192.168.4.172
+    port: 5672
+    username: guest
+    password: guest
+management:
+  security:
+    enabled: false
+
+server:
+  port: 9762
+
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+    appname: config-client
+    lease-renewal-interval-in-seconds: 30 #租约续期间隔（心跳间隔）
+
+foo: defined in bootstrap
+

@@ -1,0 +1,17 @@
+#在SpringBoot和SpringCloud项目中：application.yml一定会加载，若spring.profiles.active=dev，还会再加载application-dev.yml
+#application-dev.yml中的配置会覆盖application.yml中的配置
+spring:
+  application:
+    name: config-client
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+#  profiles:
+#    active: dev
+
+server:
+  port: 9764
+
+foo: defined in application-dev

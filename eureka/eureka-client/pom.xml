@@ -18,6 +18,7 @@
         <module>application-provider2</module>
         <module>eureka-feign-client</module>
         <module>eureka-monitor-client</module>
+        <module>eureka-zuul-client</module>
     </modules>
 
 </project>

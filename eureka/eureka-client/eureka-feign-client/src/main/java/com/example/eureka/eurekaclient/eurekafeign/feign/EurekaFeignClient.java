@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * ＠FeignClient注解来声明一个FeignClient,其中value为远程调用其他服务的服务名，FeignConfig.class为FeignClient的配置类。
- * FeignClient 结合了Ribbon的负载均衡能力。
+ * FeignClient 结合了Ribbon的负载均衡能力，自动选择合适的微服务实例。
  * 这里的 interface EurekaFeignClient 不需要实现类。
  * 注解@FeignClient中fallback属性表示熔断处理逻辑类。
  */

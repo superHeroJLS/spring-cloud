@@ -4,6 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>eureka</module>
+        <module>config</module>
+        <module>sleuth-zipkin</module>
+        <module>spring-boot-admin</module>
+        <module>spring-boot-security</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,6 +25,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>

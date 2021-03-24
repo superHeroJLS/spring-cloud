@@ -13,8 +13,13 @@ public class HiController {
     @Autowired
     private HiService hiService;
 
-    @GetMapping("/sayHi")
+    @GetMapping("/hi")
     public String sayHi(@RequestParam(value = "name", required = false, defaultValue = "jls")String name) {
         return hiService.sayHi(name);
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test ok";
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("comsumerribbon")
+@RequestMapping("cr")
 public class ConsumerWithRibbonController {
 
     @Autowired
@@ -33,6 +33,11 @@ public class ConsumerWithRibbonController {
                 + ", port: " + serviceInstance.getPort()
                 + ", serviceId: " + serviceInstance.getServiceId()
                 + ", uri: " + serviceInstance.getUri();
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test ok";
     }
 
 

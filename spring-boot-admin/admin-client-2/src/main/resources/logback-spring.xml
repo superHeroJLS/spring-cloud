@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Spring Boot Admin支持对日志的管理，也支持Logback在1.5x版本的Spring Boot 中，
+默认的日志为Logback，所以在工程的pom文件中不需要引入Logback 的依赖，但需要配置Logback的JMXConfigurator
+-->
+<configuration>
+    <include resource = "org/springframework/boot/logging/logback/base.xml"/>
+    <jmxConfigurator/>
+</configuration>

@@ -1,0 +1,32 @@
+server:
+  port: 6001
+management:
+  security:
+    enabled: false  #关闭Sping Boot Actuator安全验证
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+    appname: admin-client
+    lease-renewal-interval-in-seconds: 30 #租约续期间隔（心跳间隔）
+spring:
+  application:
+    name: admin-client
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+
+logging:
+  file: "logs/admin-client.log"  #日志输出路径
+
+endpoints:
+  shutdown:
+    enabled: true #开启shutdown
+    sensitive: false  #禁用shutdown的鉴权
+  restart:
+    enabled: true #开启重启支持

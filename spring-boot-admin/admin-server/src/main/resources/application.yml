@@ -1,0 +1,52 @@
+server:
+  port: 5000
+management:
+  security:
+    enabled: false  #关闭Sping Boot Actuator安全验证
+
+endpoints:
+  shutdown:
+    enabled: true #开启shutdown
+    sensitive: false  #禁用shutdown的鉴权
+  restart:
+    enabled: true #开启重启支持
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+    appname: admin-server
+    lease-renewal-interval-in-seconds: 30 #租约续期间隔（心跳间隔）
+    #配置带上该security 的user用户的信息，因为在工程的porn 文件加上Spring Boot Security 的起步依赖以后， 该项i=I 的所
+    #有资源（包括静态资源html 、css ，以及API 接口等）都是受保护的， 需要加上该管理员信息进行安全验证才能访问
+    metadata-map:
+      user.name: admin
+      user.password: 123456
+
+spring:
+  application:
+    name: admin-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+  boot:
+    admin:
+      routes:
+        #Spring Boot Admin开启的端点
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+      turbine:  #Spring Admin Boot集成Turbine
+        clusters: default
+        location: turbine-service #Turbine模块对应的spring.application.name
+logging:
+  file: "logs/admin-server.log"  #日志输出路径
+
+#Spring Boot security的user
+security:
+  user:
+    password: 123456
+    name: admin
+

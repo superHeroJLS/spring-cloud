@@ -19,8 +19,8 @@ public class ProviderController {
     private String port;
 
     @GetMapping("/hi")
-    public String hi(@RequestParam("name")String name) {
-        return "hi" + name + ", i am from port: " + port;
+    public String hi(@RequestParam(value = "name", required = false, defaultValue = "jls")String name) {
+        return "hi " + name + ", i am from port: " + port;
     }
 
     @GetMapping("/test")

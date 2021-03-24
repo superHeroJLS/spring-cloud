@@ -1,0 +1,33 @@
+server:
+  port: 6003
+management:
+  security:
+    enabled: false  #关闭Sping Boot Actuator安全验证
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: turbine-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+  boot:
+    admin:
+      routes:
+        #Spring Boot Admin开启的端点
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+
+logging:
+  file: "logs/admin-server.log"  #日志输出路径
+
+turbine:
+  aggregator:
+    clusterConfig: default
+  app-config: admin-client, admin-client-2  #聚合监控admin-client，admin-client-2工程的Hystrix Dashboard
+  cluster-name-expression: new String("default")

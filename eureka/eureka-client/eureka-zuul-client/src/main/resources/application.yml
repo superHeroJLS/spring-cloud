@@ -1,0 +1,48 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: eureka-zuul-client
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-cloud?useSSL=false&useUnicode=true&characterEncoding=utf8&characterSetResult=utf8
+    username: root
+    password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  routes:
+    providerapi:
+      path: /providerapi/**
+      serviceId: eureka-client-provider #eureka-client-provider有多个实例，zuul会在路由转发的时候自动开启ribbon负载均衡
+    consumerapi:
+      path: /consumerapi/**
+      serviceId: eureka-client-consumer
+    feignapi:
+      path: /feignapi/**
+      serviceId: eureka-feign-client
+#  prefix: v1  #所有的API加上前缀，http://localhost:5000/providerapi/** --> http://localhost:5000/v1/providerapi/**
+
+
+
+
+
+
+
+
+
+
+#关闭zuul中自动开启的ribbon负载均衡，手动维护服务的注册列表，非常不建议
+#ribbon:
+#  eureka:
+#  enabled: false
+#zuul:
+#  routes:
+#  providerapi:
+#    path: /providerapi/**
+#    serviceId: providerapi-v1
+#providerapi-v1:
+#  ribbon:
+#    listOfServers: http://localhost:8762,http://localhost:8763
