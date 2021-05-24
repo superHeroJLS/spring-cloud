@@ -8,6 +8,8 @@
         <module>sleuth-zipkin</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-security</module>
+        <module>seata</module>
+        <module>seata-order</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -77,6 +79,18 @@
         </dependency>
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
