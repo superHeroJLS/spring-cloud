@@ -9,7 +9,6 @@
         <module>spring-boot-admin</module>
         <module>spring-boot-security</module>
         <module>seata</module>
-        <module>seata-order</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
